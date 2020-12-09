@@ -11,7 +11,7 @@ public class CorrectChange
 	
 	public String getNotes(double change ) {
 		 String changeNeeded="";
-	      
+	      int test;
 	      int fiftyNoteNeeded=0;
 	      int twentyNoteNeeded=0;
 	      int tenNoteNeeded=0;

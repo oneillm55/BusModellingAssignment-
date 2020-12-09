@@ -12,6 +12,7 @@ public class item {
 		String type;
 		double vat;
 		double price;
+		int test;
 	}
 	
 	public item(String type, double vat, double price) {
