@@ -2,14 +2,15 @@ import java.util.ArrayList;
 
 public class item {
 		
-	ArrayList<item> List;
 	private double vat;
 	private String type;
 	private double price;
+	private String expiry;
 	
 	public item() {
 		
 		String type;
+		String expiry;
 		double vat;
 		double price;
 	}
@@ -17,6 +18,14 @@ public class item {
 	public item(String type, double vat, double price) {
 		
 		this.type = type;
+		this.vat = vat;
+		this.price = price;
+	}
+	
+	public item(String type, String expiry, double vat, double price) {
+		
+		this.type = type;
+		this.expiry = expiry;
 		this.vat = vat;
 		this.price = price;
 	}
