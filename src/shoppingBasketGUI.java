@@ -15,21 +15,20 @@ public class shoppingBasketGUI extends JFrame{
 
 	private JPanel p1, p2;
 	private JLabel lbtype, lquantity;
-	//private JTextField carT, plateNo;hnghn gh 
-	//private JSpinner carYear, s, s1;
 	private JButton calculate, vBasket, addB;
 	private JComboBox type, quan;
-	ArrayList<item> List = new ArrayList<item>();
 	
-	public shoppingBasketGUI(){
-		//Jayme is a poo
+	ArrayList<item> List;
+	ArrayList<item> basket;
+	ArrayList<String> types;
+	
+	public shoppingBasketGUI(ArrayList<item> refList){
+		List = refList;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		item tLuxury = new item("Luxury", 20, 50);
-		item tEssential = new item("Essential", 10, 30);
-		item tGift = new item("Gift", 5, 20);
-		List.add(tLuxury);
-		List.add(tEssential);
-		List.add(tGift);
+	
+		types.add("Luxury");
+		types.add("Essential");
+		types.add("Gift");
 		
 		lbtype = new JLabel("Item Type:");  
 		lquantity = new JLabel("Quantity: ");
