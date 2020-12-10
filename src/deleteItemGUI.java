@@ -60,10 +60,10 @@ public class deleteItemGUI extends JFrame {
 				//deleting an item
 				for(item i: List) {
 					String itemType = (String)typebox.getSelectedItem(); //getting text from textfield
-					if(itemType.equalsIgnoreCase("Luxury")) {
+					if(itemType.equalsIgnoreCase(i.getType())) {
 						List.remove(i);
 					}
-					else if(itemType.equalsIgnoreCase("Essential")) {
+					else if(itemType.equalsIgnoreCase(i.getType())) {
 						List.remove(i);
 					}
 					else {
