@@ -8,9 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-public class deleteItemGUI extends JFrame {
+public class removeExpiredItems extends JFrame {
 
 	private JPanel p1, p3;
 	private JLabel lbtype;
@@ -21,7 +20,7 @@ public class deleteItemGUI extends JFrame {
 	ArrayList<String> types;
 	
 	
-	public deleteItemGUI(ArrayList<item> refList) {
+	public removeExpiredItems(ArrayList<item> refList) {
 		List = refList;
 		
 		types.add("Luxury");
