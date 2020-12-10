@@ -23,7 +23,9 @@ public class shoppingBasketGUI extends JFrame{
 	ArrayList<String> types;
 	
 	public shoppingBasketGUI(ArrayList<item> refList){
+		
 		List = refList;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 		types.add("Luxury");

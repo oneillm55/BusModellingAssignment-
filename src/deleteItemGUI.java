@@ -31,7 +31,6 @@ public class deleteItemGUI extends JFrame {
 		types.add("Essential");
 		types.add("Gift");
 		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		lbtype = new JLabel("Type:");  //labels   

@@ -15,16 +15,17 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class removeExpiredItems extends JFrame {
 
 	private JPanel p1, p3;
-	private JLabel lbtype;
+	private JLabel lbtype, lbexpiryCheck, lbformat;
+	private JTextField expiryEntered; 
 	private JButton submit, cancel;
 	private JComboBox typebox;
 	
 	ArrayList<item> List;
-	ArrayList<item> expiredItems;
 	ArrayList<String> types;
 	
 	
@@ -35,15 +36,17 @@ public class removeExpiredItems extends JFrame {
 		types.add("Essential");
 		types.add("Gift");
 		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		lbtype = new JLabel("Type:");  //labels   
-
+		lbtype = new JLabel("Type:"); //labels   
         typebox = new JComboBox();
         for(String t: types) {
         	typebox.addItem(t);
         }
+        
+        lbexpiryCheck = new JLabel("Todays Date:");
+        lbformat = new JLabel("Date Format: dd-mm-yyyy");
+        expiryEntered = new JTextField(10);
 		
         submit = new JButton("Submit");
 		cancel = new JButton("Cancel");
@@ -53,6 +56,9 @@ public class removeExpiredItems extends JFrame {
 	    p3 = new JPanel(new GridLayout(1,1));
 		p1.add(lbtype);
 		p1.add(typebox);
+		p1.add(lbexpiryCheck);
+		p1.add(lbformat);
+		p1.add(expiryEntered);
 		
 		
 		p3.add(submit);
@@ -65,20 +71,14 @@ public class removeExpiredItems extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				String itemType = (String)typebox.getSelectedItem();
+				String dateInput = expiryEntered.getText();
+				int input = Integer.parseInt(dateInput);
 				boolean found = false;
-				
 				//deleting a type of expired item
 				for(item i: List) {
-				DateFormat df = new SimpleDateFormat("dd-mm-yyyy"); 
-				try {
-					Date date = df.parse(i.getExpiry());
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 					 //getting text from textfield
-					if(i.getType().equalsIgnoreCase(itemType)) {
-						expiredItems.add(i);
+					int itemExpiry = Integer.parseInt(i.getExpiry());
+					if(i.getType().equalsIgnoreCase(itemType) && itemExpiry >= input) {
 						List.remove(i);
 						found = true;
 					}
@@ -88,13 +88,6 @@ public class removeExpiredItems extends JFrame {
 					}
 						
 					}//end for
-				
-				
-					JTextArea displayExpired = new JTextArea();
-					displayExpired.setPreferredSize(new Dimension(370,300));
-					displayExpired.setLineWrap(true);
-				    displayExpired.setWrapStyleWord(false);
-					displayExpired.setText(expiredItems.toString());
 				
 			
 				dispose();	
