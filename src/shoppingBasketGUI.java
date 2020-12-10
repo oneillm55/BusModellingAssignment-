@@ -22,7 +22,7 @@ public class shoppingBasketGUI extends JFrame{
 	ArrayList<item> List = new ArrayList<item>();
 	
 	public shoppingBasketGUI(){
-		
+		//Jayme is a poo
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		item tLuxury = new item("Luxury", 20, 50);
 		item tEssential = new item("Essential", 10, 30);
