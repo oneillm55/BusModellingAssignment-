@@ -7,7 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class deleteItemGUI extends JFrame {
@@ -16,6 +18,7 @@ public class deleteItemGUI extends JFrame {
 	private JLabel lbtype;
 	private JButton submit, cancel;
 	private JComboBox typebox;
+	private JTextArea txtArea;
 	
 	ArrayList<item> List;
 	ArrayList<String> types;
@@ -40,7 +43,7 @@ public class deleteItemGUI extends JFrame {
 		
         submit = new JButton("Submit");
 		cancel = new JButton("Cancel");
-		
+		txtArea = new JTextArea();
 		p1 = new JPanel(new GridLayout(10,10)); //panel
 		//p2 = new JPanel(new GridLayout(10,10));
 	    p3 = new JPanel(new GridLayout(1,1));
@@ -57,17 +60,22 @@ public class deleteItemGUI extends JFrame {
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String itemType = (String)typebox.getSelectedItem();
+				boolean found = false;
 				//deleting an item
-				for(item i: List) {
-					String itemType = (String)typebox.getSelectedItem(); //getting text from textfield
-					if(itemType.equalsIgnoreCase(i.getType())) {
+				for(int i = 0; i < List.size(); i ++) {
+					 //getting text from textfield
+					if(List.get(i).getType().equalsIgnoreCase(itemType)) {
+						
 						List.remove(i);
-					}
-					else if(itemType.equalsIgnoreCase(i.getType())) {
-						List.remove(i);
+						p3.add(txtArea);
+						txtArea.setText(itemType + " item deleted");
+						found = true;
+						
 					}
 					else {
-						List.remove(i);
+						JOptionPane.showMessageDialog(null, "Item Not Found", "ERROR", JOptionPane.ERROR_MESSAGE);
+						found = false;
 					}
 				}
 			

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class removeExpiredItems extends JFrame {
@@ -56,24 +57,27 @@ public class removeExpiredItems extends JFrame {
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//deleting an item
+				String itemType = (String)typebox.getSelectedItem();
+				boolean found = false;
+				//deleting a type of expired item
 				for(item i: List) {
-					String itemType = (String)typebox.getSelectedItem(); //getting text from textfield
-					if(itemType.equalsIgnoreCase("Luxury")) {
+					 //getting text from textfield
+					if(i.getType().equalsIgnoreCase(itemType)) {
 						List.remove(i);
-					}
-					else if(itemType.equalsIgnoreCase("Essential")) {
-						List.remove(i);
+						found = true;
 					}
 					else {
-						List.remove(i);
+						found = false;
+						JOptionPane.showMessageDialog(null, "There are no " +itemType +" items expired", "ERROR", JOptionPane.ERROR_MESSAGE);
 					}
-				}
+						
+					}
 			
 				dispose();	
 				
-			}
-		});
+			
+			
+		}});
 		
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
