@@ -25,21 +25,25 @@ public class CorrectChange  extends JFrame{
 		JButton b9 = new JButton("9");
 		JButton bC = new JButton("Clear");
 		JButton bChange = new JButton("=");
+		JButton bPoint = new JButton(".");
 	
 		
 		JTextField display = new JTextField(30);
 		display.setEditable(false);//means the user can only edit the display via the buttons
 		display.setHorizontalAlignment(SwingConstants.RIGHT);//Aligns the text in the display to the right
-		panel.add(display);//tells the text field to span the panel and wrap after it 
 		
 		JTextArea changeDisplay = new JTextArea();
 		changeDisplay.setPreferredSize(new Dimension(370,300));
 		changeDisplay.setLineWrap(true);
 		changeDisplay.setWrapStyleWord(false);
 		
+		JLabel calcLabel = new JLabel("Please enter the amount paid : ");
 		
 		
 		
+		panel.add(calcLabel);
+		
+		panel.add(display);
 		panel.add(bC);
 
 		
@@ -56,6 +60,7 @@ public class CorrectChange  extends JFrame{
 		panel.add(b8);
 		panel.add(b9);
 		panel.add(b0);
+		panel.add(bPoint);
 		
 		panel.add(bChange);
 		panel.add(changeDisplay);
@@ -155,14 +160,31 @@ public class CorrectChange  extends JFrame{
 			}
 		});
 		
-		bChange.addActionListener(new ActionListener() {
+		bPoint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//take the number in the display feild, minus basket from it 
-				double changeNeeded= Double.parseDouble(display.getText()) -basketTotal;
-				changeDisplay.setText(getNotes(changeNeeded));
+				String num = display.getText() + bPoint.getText();
+					display.setText(num);
 					
 			}
 		});
+
+		
+		bChange.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(basketTotal>0.01) {
+					double changeNeeded= Double.parseDouble(display.getText()) -basketTotal;
+					changeDisplay.setText(getNotes(changeNeeded));
+				}else {
+					display.setText(null);
+				}
+				
+					
+			}
+		});
+		
+		
+		
+		
 		
 		
 	}
