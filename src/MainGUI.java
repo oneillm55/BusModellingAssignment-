@@ -42,7 +42,7 @@ public class MainGUI extends JFrame {
 		
 		additem.addActionListener(new ActionListener() {    //Making the add car window
 			public void actionPerformed(ActionEvent e) {
-				addItemGUI item = new addItemGUI(itemlist);
+				addItemsGUI item = new addItemsGUI(itemlist);
 				item.setTitle("Add an item");
 				item.setSize(400, 300);
 				item.setVisible(true);
