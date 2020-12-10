@@ -15,6 +15,7 @@ public class MainGUI extends JFrame {
 	private JButton exit;
 	private JButton shoppingBasket;
 	private JButton removeExpiredItems;
+	private JButton correctChange;
 	
 	private ArrayList<item> itemlist;
 	protected Component frame;
@@ -35,6 +36,7 @@ public class MainGUI extends JFrame {
 		displayitem = new JButton("Display Items");
 		deleteitem = new JButton("Delete Item");
 		shoppingBasket = new JButton("Shopping Basket");
+		correctChange = new JButton("Correct Change Calculator");
 		removeExpiredItems = new JButton("Remove Expired Items");
 		exit = new JButton("Exit");
 		
@@ -44,6 +46,7 @@ public class MainGUI extends JFrame {
 		panel1.add(exit);
 		panel1.add(shoppingBasket);
 		panel1.add(removeExpiredItems);
+		panel1.add(correctChange);
 		
 		add(panel1, BorderLayout.CENTER);
 		
@@ -102,6 +105,19 @@ public class MainGUI extends JFrame {
 				expired.setTitle("Shopping Basket");
 				expired.setSize(400, 300);
 				expired.setVisible(true);
+				
+				
+			}
+		});
+		
+		
+		correctChange.addActionListener(new ActionListener() { //Making the search car window 
+			public void actionPerformed(ActionEvent e) {
+				
+				CorrectChange change = new CorrectChange();
+				change.setTitle("Shopping Basket");
+				change.setSize(400, 300);
+				change.setVisible(true);
 				
 				
 			}

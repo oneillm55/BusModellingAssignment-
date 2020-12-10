@@ -1,4 +1,8 @@
-public class CorrectChange
+import java.util.ArrayList;
+
+import javax.swing.JFrame;
+
+public class CorrectChange extends JFrame
 {
 	
 	public CorrectChange(){
