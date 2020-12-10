@@ -65,7 +65,7 @@ public class displayGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				addItemsGUI item = new addItemsGUI(List);
-				item.setTitle("Add a car");
+				item.setTitle("Add an Item");
 				item.setSize(400, 300);
 				item.setVisible(true);
 				dispose();

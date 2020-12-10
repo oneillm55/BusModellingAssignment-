@@ -43,7 +43,7 @@ public class MainGUI extends JFrame {
 		additem.addActionListener(new ActionListener() {    //Making the add car window
 			public void actionPerformed(ActionEvent e) {
 				addItemsGUI item = new addItemsGUI(itemlist);
-				item.setTitle("Add an item");
+				item.setTitle("Add an Item");
 				item.setSize(400, 300);
 				item.setVisible(true);
 				
@@ -66,7 +66,7 @@ public class MainGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				deleteItemGUI delete = new deleteItemGUI(itemlist);
-				delete.setTitle("Display Cars");
+				delete.setTitle("Delete Items");
 				delete.setSize(400, 300);
 				delete.setVisible(true);
 				
