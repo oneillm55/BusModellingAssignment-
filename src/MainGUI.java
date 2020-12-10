@@ -13,6 +13,7 @@ public class MainGUI extends JFrame {
 	private JButton additem;
 	private JButton deleteitem;
 	private JButton exit;
+	private JButton shoppingBasket;
 	
 	private ArrayList<item> itemlist;
 	protected Component frame;
@@ -27,17 +28,19 @@ public class MainGUI extends JFrame {
 		itemlist = new ArrayList<item>();
 		//Making Panels
 		panel1 = new JPanel(); 
-		panel1 = new JPanel(new GridLayout(2,2));
+		panel1 = new JPanel(new GridLayout(3,2));
 		//adding all four buttons for the different options
 		additem = new JButton("Add New Item"); 
-		displayitem = new JButton("Display Cars");
-		deleteitem = new JButton("Search");
+		displayitem = new JButton("Display Items");
+		deleteitem = new JButton("Delete Item");
+		shoppingBasket = new JButton("Shopping Basket");
 		exit = new JButton("Exit");
 		
 		panel1.add(additem); //Adding buttons to the panel
 		panel1.add(displayitem);
 		panel1.add(deleteitem);
 		panel1.add(exit);
+		panel1.add(shoppingBasket);
 		add(panel1, BorderLayout.CENTER);
 		
 		additem.addActionListener(new ActionListener() {    //Making the add car window
@@ -69,6 +72,19 @@ public class MainGUI extends JFrame {
 				delete.setTitle("Delete Items");
 				delete.setSize(400, 300);
 				delete.setVisible(true);
+				
+				
+			}
+		});
+		
+		
+		shoppingBasket.addActionListener(new ActionListener() { //Making the search car window 
+			public void actionPerformed(ActionEvent e) {
+				
+				shoppingBasketGUI basket = new shoppingBasketGUI(itemlist);
+				basket.setTitle("Shopping Basket");
+				basket.setSize(400, 300);
+				basket.setVisible(true);
 				
 				
 			}
