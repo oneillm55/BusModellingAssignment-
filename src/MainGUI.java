@@ -65,7 +65,7 @@ public class MainGUI extends JFrame {
 		deleteitem.addActionListener(new ActionListener() { //Making the search car window 
 			public void actionPerformed(ActionEvent e) {
 				
-				deleteGUI delete = new deleteGUI(itemlist);
+				deleteItemGUI delete = new deleteItemGUI(itemlist);
 				delete.setTitle("Display Cars");
 				delete.setSize(400, 300);
 				delete.setVisible(true);
