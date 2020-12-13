@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 public class item {
 		
@@ -36,7 +35,7 @@ public class item {
 		this.price = price;
 	}
 	
-	
+	/*
 	public int getQty() {
 		return qty;
 	}
@@ -44,7 +43,7 @@ public class item {
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
-
+	*/
 	public double getPrice() {
 		return price;
 	}
@@ -83,8 +82,16 @@ public class item {
 	
 	public String toString()
 	{
-		return "Item type: "+ type;
+		return "Item type: "+ type + " Vat: "+ vat +"%" + "Price: " + price + " cd EURO" + "Expiry date:" + expiry ;
 		
+	}
+
+	public String getExpiry() {
+		return expiry;
+	}
+
+	public void setExpiry(String expiry) {
+		this.expiry = expiry;
 	}
 	
 	

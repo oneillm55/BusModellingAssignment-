@@ -4,28 +4,27 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class displayBasketGUI extends JFrame{
-	
-	private JPanel p1;
-	private JLabel cart;
-	private JButton submit, cancel;
-	private JTextArea txtArea;
+public class calculatePrice extends JFrame{
+
+	private JPanel p1, p2, p3;
+	private JLabel cart, total;
 	private JButton exit;
 	
 	ArrayList<basket> cBasket;
 
-	public displayBasketGUI(ArrayList<basket> cBasket2)
+	public calculatePrice(ArrayList<basket> cBasket2)
 	{
 		cBasket2 = cBasket;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		p1 = new JPanel();
+		p2 = new JPanel();
+		p3 = new JPanel();
 		
 		cart = new JLabel("Cart Contents: ");
 		JTextArea displayAll = new JTextArea();
@@ -34,6 +33,15 @@ public class displayBasketGUI extends JFrame{
 	    displayAll.setWrapStyleWord(false);
 		displayAll.setText(cBasket.toString());
 		
+		total = new JLabel("Cart Total");
+		JTextArea displayTotal = new JTextArea();
+		displayTotal.setPreferredSize(new Dimension(370,300));
+		displayTotal.setLineWrap(true);
+		displayTotal.setWrapStyleWord(false);
+		//displayTotal.setText(cBasket.basketTotal());
+		
+		//^^^^
+		
 		
 		//EITHER ADD ITEMS INTO COMBO BOX AND PICK THE ONE TO CLEAR
 		//OR CLEAR BASKET BUTTON
@@ -41,7 +49,7 @@ public class displayBasketGUI extends JFrame{
 		
 		
 		/*
-		returnB.addActionListener(new ActionListener() {
+		clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 		
@@ -61,8 +69,14 @@ public class displayBasketGUI extends JFrame{
 		
 		p1.add(cart);
 		p1.add(displayAll);
-		p1.add(exit);
+		
+		p2.add(total);
+		p2.add(displayTotal);
+		
+		p3.add(exit);
 		add(p1);
 		
 	}
+	
+	
 }

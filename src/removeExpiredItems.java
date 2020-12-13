@@ -1,7 +1,12 @@
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class removeExpiredItems extends JFrame {
 
@@ -18,6 +24,7 @@ public class removeExpiredItems extends JFrame {
 	private JComboBox typebox;
 	
 	ArrayList<item> List;
+	ArrayList<item> expiredItems;
 	ArrayList<String> types;
 	
 	
@@ -59,10 +66,19 @@ public class removeExpiredItems extends JFrame {
 				
 				String itemType = (String)typebox.getSelectedItem();
 				boolean found = false;
+				
 				//deleting a type of expired item
 				for(item i: List) {
+				DateFormat df = new SimpleDateFormat("dd-mm-yyyy"); 
+				try {
+					Date date = df.parse(i.getExpiry());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 					 //getting text from textfield
 					if(i.getType().equalsIgnoreCase(itemType)) {
+						expiredItems.add(i);
 						List.remove(i);
 						found = true;
 					}
@@ -71,13 +87,23 @@ public class removeExpiredItems extends JFrame {
 						JOptionPane.showMessageDialog(null, "There are no " +itemType +" items expired", "ERROR", JOptionPane.ERROR_MESSAGE);
 					}
 						
-					}
+					}//end for
+				
+				
+					JTextArea displayExpired = new JTextArea();
+					displayExpired.setPreferredSize(new Dimension(370,300));
+					displayExpired.setLineWrap(true);
+				    displayExpired.setWrapStyleWord(false);
+					displayExpired.setText(expiredItems.toString());
+				
 			
 				dispose();	
 				
 			
 			
-		}});
+		}
+				
+		});
 		
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -23,20 +23,17 @@ public class shoppingBasketGUI extends JFrame{
 	private JComboBox type, quan;
 	ArrayList<item> List;
 	
-	ArrayList<item> cBasket = new ArrayList<item>();
+	ArrayList<basket> cBasket = new ArrayList<basket>();
 	
 	ArrayList<item> selectedItems = new ArrayList<item>();
 	
-	public shoppingBasketGUI(ArrayList<item> refItem){
-		
-		List = refItem;
+	public shoppingBasketGUI(ArrayList<item> refList){
+		List = refList;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//item tLuxury = new item("Luxury", 20, 50);
-		//item tEssential = new item("Essential", 10, 30);
-		//item tGift = new item("Gift", 5, 20);
-		//List.add(tLuxury);
-		//List.add(tEssential);
-		//List.add(tGift);
+	
+		//types.add("Luxury");
+		//types.add("Essential");
+		//types.add("Gift");
 		
 		lbtype = new JLabel("Item Type:");  
 		lquantity = new JLabel("Quantity: ");
@@ -73,8 +70,10 @@ public class shoppingBasketGUI extends JFrame{
 		calculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//
-				
+				calculatePrice calculate = new calculatePrice(cBasket);
+				calculate.setTitle("Calculate");
+				calculate.setSize(400, 300);
+				calculate.setVisible(true);
 				dispose();
 				
 			}
@@ -104,7 +103,8 @@ public class shoppingBasketGUI extends JFrame{
 						{
 							
 							int qty = (int)quan.getSelectedItem(); //WORK ON
-							cBasket.add(i);
+							
+							//cBasket.add(i, qty);
 							//cBasket.add(qty);
 							
 							
