@@ -12,44 +12,48 @@ import javax.swing.JTextArea;
 
 public class displayBasketGUI extends JFrame{
 	
-	private JPanel p1;
+	private JPanel p1, p2;
 	private JLabel cart;
 	private JButton submit, cancel;
 	private JTextArea txtArea;
-	private JButton exit;
+	private JButton exit, clear;
+	private JComboBox basketContents;
 	
-	ArrayList<basket> cBasket;
+	ArrayList<item> cBasket;
 
-	public displayBasketGUI(ArrayList<basket> cBasket2)
+	public displayBasketGUI(ArrayList<item> cBasket2)
 	{
 		cBasket2 = cBasket;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		p1 = new JPanel();
+		p2 = new JPanel();
+		
+		basketContents = new JComboBox();
+		
+		for(item i : cBasket){ 
+			basketContents.addItem(i);
+		}
 		
 		cart = new JLabel("Cart Contents: ");
-		JTextArea displayAll = new JTextArea();
-		displayAll.setPreferredSize(new Dimension(370,300));
-		displayAll.setLineWrap(true);
-	    displayAll.setWrapStyleWord(false);
-		displayAll.setText(cBasket.toString());
 		
 		
-		//EITHER ADD ITEMS INTO COMBO BOX AND PICK THE ONE TO CLEAR
-		//OR CLEAR BASKET BUTTON
-		
-		
-		
-		/*
-		returnB.addActionListener(new ActionListener() {
+		clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-		
-				dispose();
+				for(item i : cBasket)
+				{
+					
+					if(i.getType().equals(basketContents.getSelectedItem()))
+						{
+							cBasket.remove(i);
+						}
+						dispose();
+				}
 				
 			}
 		});
-		*/
+		
 		
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,9 +64,13 @@ public class displayBasketGUI extends JFrame{
 		});
 		
 		p1.add(cart);
-		p1.add(displayAll);
-		p1.add(exit);
+		p1.add(basketContents);
+		p2.add(exit);
+		p2.add(clear);
+		p1.add(p2);
 		add(p1);
 		
 	}
+
+	
 }

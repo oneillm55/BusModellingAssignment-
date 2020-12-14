@@ -23,6 +23,8 @@ public class addItemsGUI extends JFrame {
 	
 	
 	public addItemsGUI(ArrayList<item> refList) {
+		
+		
 		List = refList;
 		
 		types.add("Luxury");
@@ -65,6 +67,7 @@ public class addItemsGUI extends JFrame {
 				item anItem;
 				double itemPrice = 0.00;
 				int vat = 0;
+				int qty = 10;
 				String itemType = (String)typebox.getSelectedItem(); //getting text from textfield
 				if(itemType.equalsIgnoreCase("Luxury")) {
 					itemPrice = 50.00;
@@ -80,7 +83,7 @@ public class addItemsGUI extends JFrame {
 				}
 				String itemExpiry = expiryDate.getText(); //getting text from textfield
 	
-				anItem = new item(itemType, itemExpiry, itemPrice, vat);
+				anItem = new item(itemType, itemExpiry, itemPrice, vat, qty);
 				List.add(anItem); //adds a new car
 				dispose();
 				

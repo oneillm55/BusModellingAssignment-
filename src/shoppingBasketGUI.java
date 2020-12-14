@@ -23,7 +23,7 @@ public class shoppingBasketGUI extends JFrame{
 	private JComboBox type, quan;
 	ArrayList<item> List;
 	
-	ArrayList<basket> cBasket = new ArrayList<basket>();
+	ArrayList<item> cBasket = new ArrayList<item>();
 	
 	ArrayList<item> selectedItems = new ArrayList<item>();
 	
@@ -94,29 +94,22 @@ public class shoppingBasketGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				String itemType = (String)type.getSelectedItem();
-				//double vat, price;
-				//for each loop
-				//
 				for(item i : List)
 				{
+					
 					if(i.getType().equals(type.getSelectedItem()))
 						{
 							
 							int qty = (int)quan.getSelectedItem(); //WORK ON
-							
-							//cBasket.add(i, qty);
-							//cBasket.add(qty);
-							
-							
-							//item customerItem = new item();
-							//customerItem = new item();
-							///cBasket.add(type);
-							//cBasket.add(i);
+							for(int x = 0; x < qty; x++) {
+								if(i.getQty() >= qty) {
+									cBasket.add(i);
+								}
+								else
+									dispose();
+							}
 						}
 					}
-				//String value = type.getSelectedItem().toString();
-				//String year = (String)type.getSelectedItem();
-				//int quantity = (int)quan.getSelectedItem();
 				
 				dispose();
 				

@@ -15,9 +15,9 @@ public class calculatePrice extends JFrame{
 	private JLabel cart, total;
 	private JButton exit;
 	
-	ArrayList<basket> cBasket;
+	ArrayList<item> cBasket;
 
-	public calculatePrice(ArrayList<basket> cBasket2)
+	public calculatePrice(ArrayList<item> cBasket2)
 	{
 		cBasket2 = cBasket;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,9 +38,15 @@ public class calculatePrice extends JFrame{
 		displayTotal.setPreferredSize(new Dimension(370,300));
 		displayTotal.setLineWrap(true);
 		displayTotal.setWrapStyleWord(false);
-		//displayTotal.setText(cBasket.basketTotal());
+		for(item i : cBasket) {
+			double finalPrice;
+			String fPrice;
+			finalPrice = i.basketTotal();
+			fPrice = String.valueOf(finalPrice);
+			displayTotal.setText(fPrice);
+			
+		}
 		
-		//^^^^
 		
 		
 		//EITHER ADD ITEMS INTO COMBO BOX AND PICK THE ONE TO CLEAR

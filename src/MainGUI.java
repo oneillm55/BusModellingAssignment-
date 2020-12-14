@@ -26,6 +26,8 @@ public class MainGUI extends JFrame {
 	private void makeGUI() {
 		//ArrayList
 		itemlist = new ArrayList<item>();
+		
+		
 		//Making Panels
 		panel1 = new JPanel(); 
 		panel1 = new JPanel(new GridLayout(3,2));

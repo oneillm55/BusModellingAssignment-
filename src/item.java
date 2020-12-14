@@ -27,15 +27,16 @@ public class item {
 		this.qty = qty;
 	}
 	
-	public item(String type, String expiry, double vat, double price) {
+	public item(String type, String expiry, double vat, double price,int qty) {
 		
 		this.type = type;
 		this.expiry = expiry;
 		this.vat = vat;
 		this.price = price;
+		this.qty = qty;
 	}
 	
-	/*
+	
 	public int getQty() {
 		return qty;
 	}
@@ -43,7 +44,7 @@ public class item {
 	public void setQty(int qty) {
 		this.qty = qty;
 	}
-	*/
+	
 	public double getPrice() {
 		return price;
 	}
@@ -68,7 +69,7 @@ public class item {
 		this.type = type;
 	}
 	
-	public double basketTotal(double basketTotal) {
+	public double basketTotal() {
 		
 		//should probably go in the shopping basket class.
 		
