@@ -5,11 +5,11 @@ import javax.swing.*;
 public class CorrectChange  extends JFrame{
 	//create variables that will hold the numbers used in the calculations
 	double amountPaid=0;
-	
-	//remove this line once basket functionality is added
-	double basketTotal=0;
-	
+	double basketTotal = calculatePrice.basketTotal;
+		
+
 	public CorrectChange(){
+
 
 		//create all the required panels, and buttons and textFeilds
 		JPanel panel = new JPanel();
@@ -65,8 +65,6 @@ public class CorrectChange  extends JFrame{
 		panel.add(bChange);
 		panel.add(changeDisplay);
 		
-		//row 6
-	
 		add(panel, BorderLayout.CENTER);
 		
 		//set action listeners for each of the buttons
@@ -127,6 +125,7 @@ public class CorrectChange  extends JFrame{
 			}
 		});
 	
+
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String num = display.getText() + b1.getText();
@@ -172,6 +171,7 @@ public class CorrectChange  extends JFrame{
 		bChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(basketTotal>0.01) {
+
 					double changeNeeded= Double.parseDouble(display.getText()) -basketTotal;
 					changeDisplay.setText(getNotes(changeNeeded));
 				}else {
@@ -261,13 +261,5 @@ public class CorrectChange  extends JFrame{
 		return changeNeeded;
 	}
 
-	//main method 
-	public static void main(String[] args) {
-		CorrectChange calc = new CorrectChange();
-		calc.setTitle("Calculator");
-		calc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		calc.setSize(300,270);
-		calc.setVisible(true);
 
-	}
 }

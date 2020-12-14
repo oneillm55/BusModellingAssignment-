@@ -15,40 +15,33 @@ import javax.swing.JTextField;
 public class deleteItemGUI extends JFrame {
 
 	private JPanel p1, p3;
-	private JLabel lbtype;
+	private JLabel lbsearch;
 	private JButton submit, cancel;
-	private JComboBox typebox;
-	private JTextArea txtArea;
+	private JTextField productid;
+
 	
 	ArrayList<item> List;
-	ArrayList<String> types;
+	
 	
 	
 	public deleteItemGUI(ArrayList<item> refList) {
+		
 		List = refList;
 		
-		types.add("Luxury");
-		types.add("Essential");
-		types.add("Gift");
-		
+		ArrayList<item> removalList = new ArrayList<item>();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		lbtype = new JLabel("Type:");  //labels   
-
-        typebox = new JComboBox();
-        for(String t: types) {
-        	typebox.addItem(t);
-        }
+		lbsearch = new JLabel("Enter Product ID:");  //labels   
+		productid = new JTextField();
 		
         submit = new JButton("Submit");
 		cancel = new JButton("Cancel");
-		txtArea = new JTextArea();
+	
 		p1 = new JPanel(new GridLayout(10,10)); //panel
-		//p2 = new JPanel(new GridLayout(10,10));
 	    p3 = new JPanel(new GridLayout(1,1));
-		p1.add(lbtype);
-		p1.add(typebox);
+		p1.add(lbsearch);
+		p1.add(productid);
 		
 		
 		p3.add(submit);
@@ -60,23 +53,24 @@ public class deleteItemGUI extends JFrame {
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String itemType = (String)typebox.getSelectedItem();
+				String itemID = productid.getText();
 				boolean found = false;
 				//deleting an item
-				for(int i = 0; i < List.size(); i ++) {
+				for(item i : List) {
 					 //getting text from textfield
-					if(List.get(i).getType().equalsIgnoreCase(itemType)) {
+					if(i.getId().equalsIgnoreCase(itemID)) {
 						
-						List.remove(i);
-						p3.add(txtArea);
-						txtArea.setText(itemType + " item deleted");
 						found = true;
-						
+						removalList.add(i);		
 					}
-					else {
-						JOptionPane.showMessageDialog(null, "Item Not Found", "ERROR", JOptionPane.ERROR_MESSAGE);
-						found = false;
-					}
+					
+				}//end for
+				
+				List.removeAll(removalList);
+				JOptionPane.showConfirmDialog(null, "Item Deleted", "Confirmed", JOptionPane.OK_OPTION);	
+				
+				if(found = false) {
+					JOptionPane.showMessageDialog(null, "Item Not Found", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			
 				dispose();	

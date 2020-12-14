@@ -1,7 +1,9 @@
+
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class calculatePrice extends JFrame{
+	static double basketTotal = 0.00;
 
 	private JPanel p1, p2, p3;
 	private JLabel cart, total;
@@ -17,7 +20,7 @@ public class calculatePrice extends JFrame{
 	
 	ArrayList<item> cBasket;
 
-	public calculatePrice(ArrayList<item> cBasket2)
+	public calculatePrice(List<item> cBasket2)
 	{
 		cBasket2 = cBasket;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,10 +42,14 @@ public class calculatePrice extends JFrame{
 		displayTotal.setLineWrap(true);
 		displayTotal.setWrapStyleWord(false);
 		for(item i : cBasket) {
+
 			double finalPrice;
 			String fPrice;
 			finalPrice = i.basketTotal();
 			fPrice = String.valueOf(finalPrice);
+			basketTotal = i.basketTotal();
+			fPrice = String.valueOf(basketTotal);
+
 			displayTotal.setText(fPrice);
 			
 		}
@@ -83,6 +90,6 @@ public class calculatePrice extends JFrame{
 		add(p1);
 		
 	}
-	
-	
 }
+
+
