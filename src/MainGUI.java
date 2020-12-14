@@ -123,6 +123,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 		
+		
 		exit.addActionListener(new ActionListener() { //exit system
 			public void actionPerformed(ActionEvent e) { //yes no cancel option given
 				int option = JOptionPane.showConfirmDialog(frame,"Are you sure you wish to exit?", "Please Pick an option", JOptionPane.YES_NO_CANCEL_OPTION);  
