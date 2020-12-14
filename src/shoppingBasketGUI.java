@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -17,25 +19,23 @@ public class shoppingBasketGUI extends JFrame{
 	private JLabel lbtype, lquantity;
 	private JButton calculate, vBasket, addB;
 	private JComboBox type, quan;
-	
 	ArrayList<item> List;
-	ArrayList<item> basket;
-	ArrayList<String> types;
+	
+	ArrayList<item> cBasket = new ArrayList<item>();
+	
+	ArrayList<item> selectedItems = new ArrayList<item>();
 	
 	public shoppingBasketGUI(ArrayList<item> refList){
+		
 		List = refList;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
-		types.add("Luxury");
-		types.add("Essential");
-		types.add("Gift");
 		
 		lbtype = new JLabel("Item Type:");  
 		lquantity = new JLabel("Quantity: ");
 		type = new JComboBox();
 		
-		for(int i=0; i< List.size();i++){ 
-	        type.addItem(List.get(i));
+		for(item i : List){ 
+	        type.addItem(i);
 		}
 		
 		
@@ -62,16 +62,55 @@ public class shoppingBasketGUI extends JFrame{
 		p1.add(p2);
 		add(p1);
 		
-	}
-	
-	public static void main(String[] args) 
-	{	
-		shoppingBasketGUI mainGUI = new shoppingBasketGUI();
-		mainGUI.setTitle("Main Windiow");
-		mainGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainGUI.setSize(400, 300);
-		mainGUI.setVisible(true);		
+		calculate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				calculatePrice calculate = new calculatePrice(cBasket);
+				calculate.setTitle("Calculate");
+				calculate.setSize(400, 300);
+				calculate.setVisible(true);
+				dispose();
+				
+			}
+		});
 		
+		vBasket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				displayBasketGUI display = new displayBasketGUI(cBasket);
+				display.setTitle("Display Basket Items");
+				display.setSize(400, 300);
+				display.setVisible(true);
+				
+			}
+		});
+		
+		addB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//String itemType = (String)type.getSelectedItem();
+				//for(item i : List)
+				//{
+					
+					//if(i.equals(type.getSelectedItem()))
+						//{
+							
+							//int qty = (int)quan.getSelectedItem(); //WORK ON
+							//for(int x = 0; x < qty; x++) {
+							//	if(i.getQty() >= qty) {
+									cBasket.add((item) type.getSelectedItem());
+								//}
+							//else
+							//		dispose();
+							//}
+						//}
+					//}
+				
+				dispose();
+				
+			}
+		});
+	
 	}
 	
 }

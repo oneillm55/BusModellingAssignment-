@@ -14,6 +14,8 @@ public class MainGUI extends JFrame {
 	private JButton deleteitem;
 	private JButton exit;
 	private JButton shoppingBasket;
+	private JButton removeExpiredItems;
+	private JButton correctChange;
 	
 	private ArrayList<item> itemlist;
 	protected Component frame;
@@ -28,12 +30,14 @@ public class MainGUI extends JFrame {
 		itemlist = new ArrayList<item>();
 		//Making Panels
 		panel1 = new JPanel(); 
-		panel1 = new JPanel(new GridLayout(3,2));
+		panel1 = new JPanel(new GridLayout(2,3));
 		//adding all four buttons for the different options
 		additem = new JButton("Add New Item"); 
 		displayitem = new JButton("Display Items");
 		deleteitem = new JButton("Delete Item");
 		shoppingBasket = new JButton("Shopping Basket");
+		correctChange = new JButton("Correct Change Calculator");
+		removeExpiredItems = new JButton("Remove Expired Items");
 		exit = new JButton("Exit");
 		
 		panel1.add(additem); //Adding buttons to the panel
@@ -41,19 +45,22 @@ public class MainGUI extends JFrame {
 		panel1.add(deleteitem);
 		panel1.add(exit);
 		panel1.add(shoppingBasket);
+		panel1.add(removeExpiredItems);
+		panel1.add(correctChange);
+		
 		add(panel1, BorderLayout.CENTER);
 		
-		additem.addActionListener(new ActionListener() {    //Making the add car window
+		additem.addActionListener(new ActionListener() {    
 			public void actionPerformed(ActionEvent e) {
-				addItemsGUI item = new addItemsGUI(itemlist);
-				item.setTitle("Add an Item");
-				item.setSize(400, 300);
-				item.setVisible(true);
+				addItemsGUI items = new addItemsGUI(itemlist);
+				items.setTitle("Add an Item");
+				items.setSize(400, 300);
+				items.setVisible(true);
 				
 			}
 		});
 		
-		displayitem.addActionListener(new ActionListener() { //Making the display Car window
+		displayitem.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				
 				displayGUI display = new displayGUI(itemlist);
@@ -65,7 +72,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 		
-		deleteitem.addActionListener(new ActionListener() { //Making the search car window 
+		deleteitem.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				
 				deleteItemGUI delete = new deleteItemGUI(itemlist);
@@ -78,7 +85,7 @@ public class MainGUI extends JFrame {
 		});
 		
 		
-		shoppingBasket.addActionListener(new ActionListener() { //Making the search car window 
+		shoppingBasket.addActionListener(new ActionListener() {  
 			public void actionPerformed(ActionEvent e) {
 				
 				shoppingBasketGUI basket = new shoppingBasketGUI(itemlist);
@@ -89,6 +96,33 @@ public class MainGUI extends JFrame {
 				
 			}
 		});
+		
+		
+		removeExpiredItems.addActionListener(new ActionListener() {  
+			public void actionPerformed(ActionEvent e) {
+				
+				removeExpiredItems expired = new removeExpiredItems(itemlist);
+				expired.setTitle("Remove Expired Item");
+				expired.setSize(400, 300);
+				expired.setVisible(true);
+				
+				
+			}
+		});
+		
+		
+		correctChange.addActionListener(new ActionListener() { 
+			public void actionPerformed(ActionEvent e) {
+				
+				CorrectChange change = new CorrectChange();
+				change.setTitle("Correct Change Calculator");
+				change.setSize(400, 300);
+				change.setVisible(true);
+				
+				
+			}
+		});
+		
 		
 		exit.addActionListener(new ActionListener() { //exit system
 			public void actionPerformed(ActionEvent e) { //yes no cancel option given
@@ -121,7 +155,7 @@ public class MainGUI extends JFrame {
 		MainGUI mainGUI = new MainGUI();
 		mainGUI.setTitle("Main Windiow");
 		mainGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainGUI.setSize(400, 300);
+		mainGUI.setSize(800, 600);
 		mainGUI.setVisible(true);		
 		
 	}
