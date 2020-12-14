@@ -104,6 +104,7 @@ public class shoppingBasketGUI extends JFrame{
 							for(int x = 0; x < qty; x++) {
 								if(i.getQty() >= qty) {
 									cBasket.add(i);
+									
 								}
 								else
 									dispose();
