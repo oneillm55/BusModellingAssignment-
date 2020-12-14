@@ -7,8 +7,10 @@ public class CorrectChange  extends JFrame{
 	double amountPaid=0;
 	double basketTotal = calculatePrice.basketTotal;
 		
+
 	public CorrectChange(){
-		
+
+
 		//create all the required panels, and buttons and textFeilds
 		JPanel panel = new JPanel();
 		JButton b0 = new JButton("0");
@@ -63,8 +65,6 @@ public class CorrectChange  extends JFrame{
 		panel.add(bChange);
 		panel.add(changeDisplay);
 		
-		//row 6
-	
 		add(panel, BorderLayout.CENTER);
 		
 		//set action listeners for each of the buttons
@@ -125,6 +125,7 @@ public class CorrectChange  extends JFrame{
 			}
 		});
 	
+
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String num = display.getText() + b1.getText();
@@ -170,7 +171,8 @@ public class CorrectChange  extends JFrame{
 		bChange.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(basketTotal>0.01) {
-					double changeNeeded= Double.parseDouble(display.getText()) - basketTotal;
+
+					double changeNeeded= Double.parseDouble(display.getText()) -basketTotal;
 					changeDisplay.setText(getNotes(changeNeeded));
 				}else {
 					display.setText(null);
@@ -259,6 +261,5 @@ public class CorrectChange  extends JFrame{
 		return changeNeeded;
 	}
 
-	
-	
+
 }
