@@ -30,7 +30,7 @@ public class MainGUI extends JFrame {
 		itemlist = new ArrayList<item>();
 		//Making Panels
 		panel1 = new JPanel(); 
-		panel1 = new JPanel(new GridLayout(3,2));
+		panel1 = new JPanel(new GridLayout(2,3));
 		//adding all four buttons for the different options
 		additem = new JButton("Add New Item"); 
 		displayitem = new JButton("Display Items");
@@ -50,17 +50,17 @@ public class MainGUI extends JFrame {
 		
 		add(panel1, BorderLayout.CENTER);
 		
-		additem.addActionListener(new ActionListener() {    //Making the add car window
+		additem.addActionListener(new ActionListener() {    
 			public void actionPerformed(ActionEvent e) {
-				addItemsGUI item = new addItemsGUI(itemlist);
-				item.setTitle("Add an Item");
-				item.setSize(400, 300);
-				item.setVisible(true);
+				addItemsGUI items = new addItemsGUI(itemlist);
+				items.setTitle("Add an Item");
+				items.setSize(400, 300);
+				items.setVisible(true);
 				
 			}
 		});
 		
-		displayitem.addActionListener(new ActionListener() { //Making the display Car window
+		displayitem.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				
 				displayGUI display = new displayGUI(itemlist);
@@ -72,7 +72,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 		
-		deleteitem.addActionListener(new ActionListener() { //Making the search car window 
+		deleteitem.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				
 				deleteItemGUI delete = new deleteItemGUI(itemlist);
@@ -85,7 +85,7 @@ public class MainGUI extends JFrame {
 		});
 		
 		
-		shoppingBasket.addActionListener(new ActionListener() { //Making the search car window 
+		shoppingBasket.addActionListener(new ActionListener() {  
 			public void actionPerformed(ActionEvent e) {
 				
 				shoppingBasketGUI basket = new shoppingBasketGUI(itemlist);
@@ -98,11 +98,11 @@ public class MainGUI extends JFrame {
 		});
 		
 		
-		removeExpiredItems.addActionListener(new ActionListener() { //Making the search car window 
+		removeExpiredItems.addActionListener(new ActionListener() {  
 			public void actionPerformed(ActionEvent e) {
 				
 				removeExpiredItems expired = new removeExpiredItems(itemlist);
-				expired.setTitle("Shopping Basket");
+				expired.setTitle("Remove Expired Item");
 				expired.setSize(400, 300);
 				expired.setVisible(true);
 				
@@ -111,11 +111,11 @@ public class MainGUI extends JFrame {
 		});
 		
 		
-		correctChange.addActionListener(new ActionListener() { //Making the search car window 
+		correctChange.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				
 				CorrectChange change = new CorrectChange();
-				change.setTitle("Shopping Basket");
+				change.setTitle("Correct Change Calculator");
 				change.setSize(400, 300);
 				change.setVisible(true);
 				
@@ -154,7 +154,7 @@ public class MainGUI extends JFrame {
 		MainGUI mainGUI = new MainGUI();
 		mainGUI.setTitle("Main Windiow");
 		mainGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainGUI.setSize(400, 300);
+		mainGUI.setSize(800, 600);
 		mainGUI.setVisible(true);		
 		
 	}

@@ -26,19 +26,21 @@ public class removeExpiredItems extends JFrame {
 	private JComboBox typebox;
 	
 	ArrayList<item> List;
-	ArrayList<String> types;
+	
+	
 	
 	
 	public removeExpiredItems(ArrayList<item> refList) {
 		List = refList;
-		
+		ArrayList<String> types = new ArrayList<String>();
 		types.add("Luxury");
 		types.add("Essential");
 		types.add("Gift");
+		ArrayList<item> expiredList = new ArrayList<item>();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		lbtype = new JLabel("Type:"); //labels   
+		lbtype = new JLabel("Item Type:"); //labels   
         typebox = new JComboBox();
         for(String t: types) {
         	typebox.addItem(t);
@@ -51,8 +53,8 @@ public class removeExpiredItems extends JFrame {
         submit = new JButton("Submit");
 		cancel = new JButton("Cancel");
 		
-		p1 = new JPanel(new GridLayout(10,10)); //panel
-		//p2 = new JPanel(new GridLayout(10,10));
+		//panel
+		p1 = new JPanel(new GridLayout(10,10)); 
 	    p3 = new JPanel(new GridLayout(1,1));
 		p1.add(lbtype);
 		p1.add(typebox);
@@ -70,27 +72,38 @@ public class removeExpiredItems extends JFrame {
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
 				String itemType = (String)typebox.getSelectedItem();
 				String dateInput = expiryEntered.getText();
-				int input = Integer.parseInt(dateInput);
+				Date date = null;
 				boolean found = false;
+				try {
+					date = new SimpleDateFormat("dd/MM/yyyy").parse(dateInput);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}				
+				
 				//deleting a type of expired item
 				for(item i: List) {
-					 //getting text from textfield
-					int itemExpiry = Integer.parseInt(i.getExpiry());
-					if(i.getType().equalsIgnoreCase(itemType) && itemExpiry >= input) {
-						List.remove(i);
-						found = true;
-					}
-					else {
-						found = false;
-						JOptionPane.showMessageDialog(null, "There are no " +itemType +" items expired", "ERROR", JOptionPane.ERROR_MESSAGE);
-					}
+					
+					if(i.getType().equalsIgnoreCase(itemType) && i.getDate().before(date)) {
 						
-					}//end for
+						found = true;
+						expiredList.add(i);
+						
+					}
+					
+				}//end for
 				
-			
-				dispose();	
+				List.removeAll(expiredList);
+				
+				if (found = false) {
+					JOptionPane.showMessageDialog(null, "There are no " +itemType +" items expired", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+					
+				
+			 dispose();	
 				
 			
 			
