@@ -19,11 +19,9 @@ public class displayBasketGUI extends JFrame{
 	private JButton exit, clear;
 	private JComboBox basketContents;
 	
-	ArrayList<item> cBasket;
 
-	public displayBasketGUI(ArrayList<item> cBasket2)
+	public displayBasketGUI()
 	{
-		cBasket2 = cBasket;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		p1 = new JPanel();
@@ -31,45 +29,41 @@ public class displayBasketGUI extends JFrame{
 		
 		basketContents = new JComboBox();
 		
-		for(item i : cBasket){ 
+		for(item i : shoppingBasketGUI.cBasket){ 
 			basketContents.addItem(i);
 			System.out.print(i);
 		}
 		
 		cart = new JLabel("Cart Contents: ");
+		cancel = new JButton("Exit");
+		clear = new JButton("Clear");
 		
+		p1.add(cart);
+		p1.add(basketContents);
+		p2.add(clear);
+		p2.add(cancel);
+		p1.add(p2);
+		add(p1);
 		
 		clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				for(item i : cBasket)
-				{
-					
-					if(i.getType().equals(basketContents.getSelectedItem()))
-						{
-							cBasket.remove(i);
-						}
-						dispose();
-				}
-				
-			}
-		});
 		
+						shoppingBasketGUI.cBasket=null;
 		
-		exit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
 				dispose();
 				
 			}
 		});
 		
-		p1.add(cart);
-		p1.add(basketContents);
-		p2.add(exit);
-		p2.add(clear);
-		p1.add(p2);
-		add(p1);
+		
+		cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+			}
+		});
+
 		
 	}
 

@@ -109,17 +109,6 @@ public void setQty(int qty) {
 		return date1;
 	}
 	
-public double basketTotal() {
-		
-		//should probably go in the shopping basket class.
-		
-		double pric = this.price;
-		double vt = this.vat;
-		double vatamt = price*vt/100;
-		
-		basketTotal = pric + vatamt;
-		return basketTotal;
-	}
 	
 	
 }

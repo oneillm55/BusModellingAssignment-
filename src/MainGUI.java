@@ -90,7 +90,7 @@ public class MainGUI extends JFrame {
 				
 				shoppingBasketGUI basket = new shoppingBasketGUI(itemlist);
 				basket.setTitle("Shopping Basket");
-				basket.setSize(400, 300);
+				basket.setSize(600, 400);
 				basket.setVisible(true);
 				
 				

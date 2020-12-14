@@ -17,11 +17,9 @@ public class calculatePrice extends JFrame{
 	private JLabel cart, total;
 	private JButton exit;
 	
-	ArrayList<item> cBasket;
 
 	public calculatePrice(ArrayList<item> cBasket2)
 	{
-		cBasket2 = cBasket;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		p1 = new JPanel();
@@ -29,42 +27,38 @@ public class calculatePrice extends JFrame{
 		p3 = new JPanel();
 		
 		cart = new JLabel("Cart Contents: ");
+		exit = new JButton("Exit");
+		
 		JTextArea displayAll = new JTextArea();
 		displayAll.setPreferredSize(new Dimension(370,300));
 		displayAll.setLineWrap(true);
 	    displayAll.setWrapStyleWord(false);
-		displayAll.setText(cBasket.toString());
+		displayAll.setText(shoppingBasketGUI.cBasket.toString());
 		
 		total = new JLabel("Cart Total");
 		JTextArea displayTotal = new JTextArea();
 		displayTotal.setPreferredSize(new Dimension(370,300));
 		displayTotal.setLineWrap(true);
 		displayTotal.setWrapStyleWord(false);
-		for(item i : cBasket) {
-			String fPrice;
-			basketTotal = i.basketTotal();
-			fPrice = String.valueOf(basketTotal);
-			displayTotal.setText(fPrice);
+		String fPrice = null;
+		for(item i : shoppingBasketGUI.cBasket) {
 			
+			basketTotal =basketTotal+ (i.getPrice()+ ((i.getVat()/100)*i.getPrice()));	
 		}
+		fPrice = String.valueOf(basketTotal);
+		displayTotal.setText(fPrice);
 		
+	
+
+		p1.add(cart);
+		p1.add(displayAll);
 		
+		p2.add(total);
+		p2.add(displayTotal);
+		p2.add(exit);
 		
-		//EITHER ADD ITEMS INTO COMBO BOX AND PICK THE ONE TO CLEAR
-		//OR CLEAR BASKET BUTTON
-		
-		
-		
-		/*
-		clear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-		
-				dispose();
-				
-			}
-		});
-		*/
+		p1.add(p2);
+		add(p1);
 		
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -74,14 +68,6 @@ public class calculatePrice extends JFrame{
 			}
 		});
 		
-		p1.add(cart);
-		p1.add(displayAll);
-		
-		p2.add(total);
-		p2.add(displayTotal);
-		
-		p3.add(exit);
-		add(p1);
 		
 	}
 	

@@ -9,7 +9,15 @@ public class CorrectChange  extends JFrame{
 		
 
 	public CorrectChange(){
+		
+		if(basketTotal==0 ){
+			for(item i : shoppingBasketGUI.cBasket) {
+				
+				basketTotal =basketTotal+ (i.getPrice()+ ((i.getVat()/100)*i.getPrice()));	
+			}
 
+
+		}
 
 		//create all the required panels, and buttons and textFeilds
 		JPanel panel = new JPanel();

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
@@ -17,32 +18,25 @@ public class shoppingBasketGUI extends JFrame{
 
 	private JPanel p1, p2;
 	private JLabel lbtype, lquantity;
-	private JButton calculate, vBasket, addB;
-	private JComboBox type, quan;
+	private JButton calculate, vBasket, addB, cancel;
+	private JComboBox<item> type = new JComboBox<item>();;
 	ArrayList<item> List;
 	
-	ArrayList<item> cBasket = new ArrayList<item>();
+	static ArrayList<item> cBasket = new ArrayList<>();
 	
-	ArrayList<item> selectedItems = new ArrayList<item>();
+	ArrayList<item> selectedItems = new ArrayList<>();
 	
 	public shoppingBasketGUI(ArrayList<item> refList){
 		
 		List = refList;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		lbtype = new JLabel("Item Type:");  
-		lquantity = new JLabel("Quantity: ");
-		type = new JComboBox();
-		
+
+		lbtype = new JLabel("Item:");  
 		for(item i : List){ 
 	        type.addItem(i);
 		}
 		
 		
-		quan = new JComboBox();
-		for(int i=0;i<=10;i++){ 
-	        quan.addItem(i);
-		}
 		
 		p1 = new JPanel(new GridLayout(10,10));
 		p2 = new JPanel(new GridLayout(1,1));
@@ -50,15 +44,15 @@ public class shoppingBasketGUI extends JFrame{
 		calculate = new JButton("Calculate");
 		vBasket = new JButton("View Basket");
 		addB = new JButton("Add to basket");
+		cancel = new JButton("Exit");
 		
 		p1.add(lbtype);
 		p1.add(type);
-		p1.add(lquantity);
-		p1.add(quan);
 		
 		p2.add(calculate);
 		p2.add(vBasket);
 		p2.add(addB);
+		p2.add(cancel);
 		p1.add(p2);
 		add(p1);
 		
@@ -77,10 +71,17 @@ public class shoppingBasketGUI extends JFrame{
 		vBasket.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				displayBasketGUI display = new displayBasketGUI(cBasket);
-				display.setTitle("Display Basket Items");
-				display.setSize(400, 300);
-				display.setVisible(true);
+				
+				if(cBasket!=null) {
+					displayBasketGUI display = new displayBasketGUI();
+					display.setTitle("Display Basket Items");
+					display.setSize(400, 300);
+					display.setVisible(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "Basket Empty", "ERROR", JOptionPane.ERROR_MESSAGE);
+					
+				}
+				
 				
 			}
 		});
@@ -88,26 +89,19 @@ public class shoppingBasketGUI extends JFrame{
 		addB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//String itemType = (String)type.getSelectedItem();
-				//for(item i : List)
-				//{
-					
-					//if(i.equals(type.getSelectedItem()))
-						//{
-							
-							//int qty = (int)quan.getSelectedItem(); //WORK ON
-							//for(int x = 0; x < qty; x++) {
-							//	if(i.getQty() >= qty) {
-									cBasket.add((item) type.getSelectedItem());
-								//}
-							//else
-							//		dispose();
-							//}
-						//}
-					//}
+				//add the item to basket
+				cBasket.add((item) type.getSelectedItem());
+
 				
 				dispose();
 				
+			}
+		});
+		
+		cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
 			}
 		});
 	
