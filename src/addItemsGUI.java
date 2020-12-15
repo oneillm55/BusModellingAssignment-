@@ -28,12 +28,6 @@ public class addItemsGUI extends JFrame {
 		types.add("Luxury");
 		types.add("Essential");
 		types.add("Gift");
-		item anitem1 = new item("L001", "Luxury", "02/04/2020", 20.0, 50.0);
-		item anitem2 = new item("L002", "Luxury", "12/05/2020", 20.0, 50.0);
-		item anitem3 = new item("L003", "Luxury", "25/12/2020", 20.0, 50.0);
-		List.add(anitem1);
-		List.add(anitem2);
-		List.add(anitem3);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		lbid = new JLabel("Product ID: ");

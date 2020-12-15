@@ -61,7 +61,7 @@ public class shoppingBasketGUI extends JFrame{
 				
 				calculatePrice calculate = new calculatePrice(cBasket);
 				calculate.setTitle("Calculate");
-				calculate.setSize(400, 300);
+				calculate.setSize(500, 300);
 				calculate.setVisible(true);
 				dispose();
 				

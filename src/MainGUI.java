@@ -65,7 +65,7 @@ public class MainGUI extends JFrame {
 				
 				displayGUI display = new displayGUI(itemlist);
 				display.setTitle("Display Items");
-				display.setSize(400, 300);
+				display.setSize(600, 500);
 				display.setVisible(true);
 				
 				
@@ -77,7 +77,7 @@ public class MainGUI extends JFrame {
 				
 				deleteItemGUI delete = new deleteItemGUI(itemlist);
 				delete.setTitle("Delete Items");
-				delete.setSize(400, 300);
+				delete.setSize(600, 500);
 				delete.setVisible(true);
 				
 				

@@ -30,14 +30,14 @@ public class calculatePrice extends JFrame{
 		exit = new JButton("Exit");
 		
 		JTextArea displayAll = new JTextArea();
-		displayAll.setPreferredSize(new Dimension(370,300));
+		displayAll.setPreferredSize(new Dimension(200,100));
 		displayAll.setLineWrap(true);
 	    displayAll.setWrapStyleWord(false);
 		displayAll.setText(shoppingBasketGUI.cBasket.toString());
 		
 		total = new JLabel("Cart Total");
 		JTextArea displayTotal = new JTextArea();
-		displayTotal.setPreferredSize(new Dimension(370,300));
+		displayTotal.setPreferredSize(new Dimension(100,100));
 		displayTotal.setLineWrap(true);
 		displayTotal.setWrapStyleWord(false);
 		String fPrice = null;

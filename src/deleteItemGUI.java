@@ -67,11 +67,16 @@ public class deleteItemGUI extends JFrame {
 				}//end for
 				
 				List.removeAll(removalList);
-				JOptionPane.showConfirmDialog(null, "Item Deleted", "Confirmed", JOptionPane.OK_OPTION);	
 				
 				if(found = false) {
 					JOptionPane.showMessageDialog(null, "Item Not Found", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}else {
+					
+					JOptionPane.showConfirmDialog(null, "Item Deleted", "Confirmed", JOptionPane.OK_OPTION);	
+					
+					
 				}
+			
 			
 				dispose();	
 				

@@ -35,7 +35,7 @@ public class displayGUI extends JFrame {
 		p3 = new JPanel();
 		itemlist1 = new JLabel("List of Items are as follows: ");
 		JTextArea displayAll = new JTextArea();
-		displayAll.setPreferredSize(new Dimension(370,300));
+		displayAll.setPreferredSize(new Dimension(500,500));
 		displayAll.setLineWrap(true);
 	    displayAll.setWrapStyleWord(false);
 		displayAll.setText(List.toString());
